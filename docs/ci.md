@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install git+https://github.com/<you>/agent-tangle
+      - run: pip install git+https://github.com/pveiberger/agent-tangle
       - name: create local branches for every remote agent branch
         run: |
           for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ | grep -E '^origin/(agent|claude|codex)/'); do

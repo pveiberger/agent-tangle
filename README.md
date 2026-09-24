@@ -49,7 +49,7 @@ tangle is the missing step between "every agent is done" and "merge".
 ## Install
 
 ```bash
-pip install git+https://github.com/<you>/agent-tangle
+pip install git+https://github.com/pveiberger/agent-tangle
 ```
 
 Zero dependencies, Python ≥ 3.9, git ≥ 2.38 (for `git merge-tree --write-tree`).
