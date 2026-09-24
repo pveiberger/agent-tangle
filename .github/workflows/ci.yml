@@ -1,0 +1,29 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.9", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: src
+      - name: demo smoke test
+        shell: bash
+        run: |
+          pip install .
+          python examples/make_demo.py "$RUNNER_TEMP/demo"
+          cd "$RUNNER_TEMP/demo"
+          tangle scan --fail-on never
+          ! tangle verify --test "python -m unittest -q"   # the demo is supposed to BREAK

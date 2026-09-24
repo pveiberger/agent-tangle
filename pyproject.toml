@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-tangle"
+version = "0.1.0"
+description = "Find the parallel AI-agent branches that break each other - before you merge them."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+keywords = ["ai-agents", "coding-agents", "git", "merge-conflicts", "worktrees", "claude-code", "codex", "cursor"]
+classifiers = [
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Topic :: Software Development :: Version Control :: Git",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+[project.scripts]
+tangle = "tangle.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
